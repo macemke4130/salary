@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  margin: 2rem;
+  background-color: #0f1116;
+}
+
+.button-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+button {
+  border: none;
+  background-color: aqua;
+  border-radius: 100vw;
+  padding-inline: 2rem;
+  padding-block: 0.5rem;
+}
