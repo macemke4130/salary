@@ -10,12 +10,14 @@ fn main() {
 #[derive(Clone, Copy)]
 struct GlobalState {
     dollars_per_year: Signal<f32>,
+    global_view: Signal<String>,
 }
 
 #[component]
 fn App() -> Element {
     let app_state = use_context_provider(|| GlobalState {
         dollars_per_year: Signal::new(0.0),
+        global_view: Signal::new("inputs".to_string()),
     });
 
     rsx!(
@@ -27,14 +29,27 @@ fn App() -> Element {
 
 #[component]
 pub fn Home() -> Element {
+    let mut global_view = use_context::<GlobalState>().global_view;
+
     rsx! {
-        Inputs {}
+        if global_view() == "inputs" { Inputs {} } else { Results {} }
+    }
+}
+
+#[component]
+pub fn Results() -> Element {
+    rsx! {
+        h1 {"Results"}
     }
 }
 
 #[component]
 pub fn Inputs() -> Element {
+    //Context
+    let mut global_view = use_context::<GlobalState>().global_view;
     let mut dollars_per_year = use_context::<GlobalState>().dollars_per_year;
+
+    // State
     let mut component_view = use_signal(|| "hourly".to_string());
     let mut hourly_rate = use_signal(|| 0.0);
     let mut hours_per_week = use_signal(|| 40.0);
@@ -95,6 +110,15 @@ pub fn Inputs() -> Element {
                     }
                 }
             }
+       }
+
+       button {
+           onclick: move |_| {
+               if dollars_per_year() > 0.0 {
+                   global_view.set("results".to_string())
+                }
+            },
+            "Go"
        }
     }
 }
