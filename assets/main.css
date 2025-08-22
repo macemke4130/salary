@@ -30,3 +30,10 @@ button {
   padding-inline: 2rem;
   padding-block: 0.5rem;
 }
+
+label {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-block-end: 1rem;
+}
