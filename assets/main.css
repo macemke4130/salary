@@ -3,6 +3,7 @@
   font-size: inherit;
   font-weight: inherit;
   font-family: inherit;
+  line-height: inherit;
 }
 
 html {
@@ -12,6 +13,7 @@ html {
 body {
   font-size: 1.8rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
   color: #fff;
   margin: 2rem;
   background-color: #0f1116;
@@ -36,4 +38,17 @@ label {
   gap: 1rem;
   align-items: center;
   margin-block-end: 1rem;
+}
+
+:where(p, h1, h2, h3, h4, h5, h6) {
+  margin-block-start: 0;
+  margin-block-end: 2.5rem;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  text-wrap: balance;
+}
+
+:where(p) {
+  text-wrap: pretty;
 }
